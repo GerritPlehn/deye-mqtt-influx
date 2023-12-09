@@ -1,0 +1,25 @@
+{
+  "name": "deye-mqtt-influx",
+  "author": {
+    "name": "Gerrit Plehn",
+    "url": "https://gerritplehn.com"
+  },
+  "license": "MIT",
+  "module": "src/index.ts",
+  "scripts": {
+    "start": "bun src/index.ts"
+  },
+  "type": "module",
+  "devDependencies": {
+    "bun-types": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@influxdata/influxdb-client": "^1.33.2",
+    "mqtt": "^5.3.3",
+    "zod": "^3.22.4"
+  },
+  "prettier": {}
+}
