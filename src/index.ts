@@ -54,13 +54,14 @@ const saveBundle = async (bundle: Bundle) => {
   const influxPoint = new Point("Deye").timestamp(bundle.timestamp);
   for (const bundleEntry of bundle.entries) {
     const { topic, message } = metrics.parse(bundleEntry);
+    const sanitizedTopic = topic.replace(/^deye\//, "");
     switch (typeof message) {
       case "string": {
-        influxPoint.stringField(topic, message);
+        influxPoint.stringField(sanitizedTopic, message);
         break;
       }
       case "number": {
-        influxPoint.floatField(topic, message);
+        influxPoint.floatField(sanitizedTopic, message);
         break;
       }
       default: {
