@@ -1,25 +1,27 @@
 {
-  "name": "deye-mqtt-influx",
-  "author": {
-    "name": "Gerrit Plehn",
-    "url": "https://gerritplehn.com"
-  },
-  "license": "MIT",
-  "module": "src/index.ts",
-  "scripts": {
-    "start": "bun src/index.ts"
-  },
-  "type": "module",
-  "devDependencies": {
-    "bun-types": "latest"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  },
-  "dependencies": {
-    "@influxdata/influxdb-client": "^1.33.2",
-    "mqtt": "^5.3.3",
-    "zod": "^3.22.4"
-  },
-  "prettier": {}
+	"name": "deye-mqtt-influx",
+	"author": {
+		"name": "Gerrit Plehn",
+		"url": "https://gerritplehn.com"
+	},
+	"license": "MIT",
+	"module": "src/index.ts",
+	"scripts": {
+		"start": "bun src/index.ts"
+	},
+	"type": "module",
+	"devDependencies": {
+		"@biomejs/biome": "2.4.4",
+		"@types/bun": "1.3.9",
+		"lefthook": "^2.1.1"
+	},
+	"peerDependencies": {
+		"typescript": "^5.9.3"
+	},
+	"dependencies": {
+		"@influxdata/influxdb-client": "^1.33.2",
+		"mqtt": "^5.3.3",
+		"zod": "^4.3.6"
+	},
+	"prettier": {}
 }

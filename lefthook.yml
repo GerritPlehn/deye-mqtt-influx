@@ -1,0 +1,6 @@
+colors: false
+output: false
+pre-commit:
+  jobs:
+    - run: bunx @biomejs/biome check --write --colors=off --log-kind=compact --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
+      stage_fixed: true
