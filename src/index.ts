@@ -15,12 +15,17 @@ const mqttClient = mqtt.connect(mqttCfg.url, {
 
 const topics = ["deye/#"];
 
+const ts = (message: string) => {
+	const timestamp = new Date();
+	return `${timestamp.toISOString()}: ${message}`;
+};
+
 mqttClient.on("connect", () => {
-	console.log("connected to inverter");
+	console.log(ts("connected to inverter"));
 	for (const topic of topics) {
 		mqttClient.subscribe(topic, (err) => {
 			if (!err) {
-				console.log(`subscribed to ${topic}`);
+				console.log(ts(`subscribed to ${topic}`));
 			}
 		});
 	}
@@ -31,7 +36,7 @@ const bundleTimeoutMs = 1000;
 let bundle: Bundle;
 
 mqttClient.on("message", (topic, message, packet) => {
-	console.log(`message in ${topic}: ${message.toString()}`);
+	console.log(ts(`message in ${topic}: ${message.toString()}`));
 
 	const messageTs = new Date();
 	if (
@@ -64,7 +69,7 @@ const saveBundle = async (bundle: Bundle) => {
 				break;
 			}
 			default: {
-				console.warn(`unknown message of type ${typeof message}`);
+				console.warn(ts(`unknown message of type ${typeof message}`));
 			}
 		}
 	}
@@ -74,7 +79,7 @@ const saveBundle = async (bundle: Bundle) => {
 const gracefulShutdown = async () => {
 	await mqttClient.endAsync();
 	await influxDb.close();
-	console.log("closed connections");
+	console.log(ts("closed connections"));
 	process.exit();
 };
 
